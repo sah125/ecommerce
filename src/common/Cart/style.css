@@ -66,6 +66,11 @@
 .desCart {
   background: #f6f9fc;
 }
+button:hover {
+  cursor: pointer;
+  background-color: #e94560;
+  color: #fff;
+}
 .cart-total h4 {
   font-size: 15px;
   font-weight: 400;
