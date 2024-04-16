@@ -1,23 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../../components/assets/images/logo.svg";
-import { Link } from "react-router-dom/cjs/react-router-dom.min";
+import { Link } from "react-router-dom";
 
 const Search = ({ CartItem }) => {
+  const [searchActive, setSearchActive] = useState(false);
+
+  const toggleSearch = () => {
+    setSearchActive(!searchActive);
+  };
+
+  // Event listener for scrolling
   window.addEventListener("scroll", function () {
     const search = document.querySelector(".search");
     search.classList.toggle("active", window.scrollY > 100);
   });
+
   return (
     <>
-      <section className="search">
+      <section className={`search ${searchActive ? "active" : ""}`}>
         <div className="container c-flex">
           <div className="logo width">
             <img src={logo} alt="" />
           </div>
 
           <div className="search-box f-flex">
-            <i className="fa fa-search"></i>
-            <input type="text" placeholder="Search and hit enter..." />
+            <i className="fa fa-search" onClick={toggleSearch}></i>
+            <input
+              type="text"
+              placeholder="Search and hit enter..."
+              style={{ display: searchActive ? "block" : "none" }}
+            />
             <span>All Category</span>
           </div>
 
@@ -35,4 +47,5 @@ const Search = ({ CartItem }) => {
     </>
   );
 };
+
 export default Search;

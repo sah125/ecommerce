@@ -123,7 +123,7 @@ header ul li a:hover {
   transition: 0.5s;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 480px) {
   header ul {
     padding-top: 30px;
   }
@@ -177,5 +177,48 @@ header ul li a:hover {
   }
   .header.active {
     height: 10vh;
+  }
+  header {
+    height: auto; /* Adjust height for mobile devices */
+  }
+
+  header ul {
+    line-height: 20px; /* Adjust line height for mobile devices */
+    padding-top: 10px; /* Adjust padding for mobile devices */
+  }
+
+  header ul li {
+    margin-left: 0; /* Remove margin for list items */
+  }
+
+  header ul li a {
+    font-size: 13px; /* Adjust font size for menu items */
+  }
+
+  .search {
+    width: 100%; /* Occupy full width on mobile devices */
+    justify-content: flex-end; /* Align items to the right */
+    position: relative; /* Make it relative for absolute positioning of search icon */
+  }
+
+  .search-box {
+    position: absolute; /* Position search box absolutely */
+    top: 100%; /* Position below the search bar */
+    right: 0; /* Align to the right */
+    width: 100%; /* Occupy full width */
+    background-color: #fff; /* Set background color */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Add box shadow for better visibility */
+  }
+
+  .search.active .search-box {
+    display: flex; /* Show search box when active */
+  }
+
+  .search.active .search-icon {
+    display: none; /* Hide search icon when search box is active */
+  }
+
+  .search-box input {
+    width: calc(100% - 40px); /* Adjust input width to fit container */
   }
 }
