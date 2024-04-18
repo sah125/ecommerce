@@ -3,56 +3,123 @@
   background-color: #0f3460;
   padding: 10px 0;
   color: #fff;
+  display: flex;
+  justify-content: space-between;
 }
+
+.head .container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.head .left,
+.head .right {
+  display: flex;
+  align-items: center;
+}
+
 .head i {
   margin-right: 10px;
 }
+
 .head label {
-  margin-right: 30px;
+  margin-right: 20px;
   font-size: 13px;
 }
+
+/* Media Queries for Tablet */
+@media (max-width: 768px) {
+  .head .left {
+    margin-bottom: 10px;
+  }
+}
+
+/* Media Queries for Mobile */
+@media (max-width: 576px) {
+  .head {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .head .left {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+  .fa-phone {
+    margin-bottom: 10px;
+  }
+
+  .head .right {
+    display: none;
+  }
+
+  .head label {
+    margin-right: 0;
+    margin-bottom: 5px;
+  }
+  .detail-info {
+    display: flex;
+  }
+  .detail-info .fa-envelope {
+    padding-left: 20px;
+  }
+}
+
 /*------head-----------*/
 /*------search-----------*/
+.row {
+  width: auto;
+}
 .search {
   padding: 10px 0;
 }
+
 .search .logo img {
   width: 80%;
   height: 80%;
 }
+
 .search .width {
   width: 20%;
 }
+
 .search-box {
   width: 80%;
   border: 2px solid rgba(0, 0, 0, 0.3);
-  /*padding: 10px;*/
   border-radius: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
 }
+
 .search-box i {
-  width: 5%;
   text-align: center;
   font-size: 20px;
   opacity: 0.5;
   padding: 15px 20px;
-  font-size: 17px;
+  cursor: pointer; /* Add cursor pointer to the search icon */
 }
+
 .search-box input {
-  width: 100%;
+  flex: 1;
   padding: 10px;
+  border: none;
+  outline: none;
+  display: none; /* Hide input by default */
 }
-::placeholder {
-  font-size: 15px;
-}
+
 .search-box span {
-  width: 20%;
   opacity: 0.5;
   border-left: 2px solid rgba(0, 0, 0, 0.1);
   padding: 10px;
 }
+
 .cart {
   position: relative;
 }
+
 .search .cart span {
   position: absolute;
   top: -10px;
@@ -65,9 +132,37 @@
   font-size: 12px;
   color: #fff;
 }
+
 .search .f-flex {
-  justify-content: end;
+  justify-content: flex-end;
 }
+
+/* Show input when active */
+.search-box.active input {
+  display: block;
+}
+
+/* Show search icon button on mobile */
+@media (max-width: 576px) {
+  .search-box .fa-search {
+    display: block;
+  }
+
+  .search-box input {
+    display: none; /* Hide input on mobile */
+  }
+
+  /* Hide search box by default on mobile */
+  .search:not(.active) .search-box input {
+    display: none;
+  }
+
+  /* Hide search icon for PCs and tablets */
+  .search-box .fa-search {
+    display: none;
+  }
+}
+
 /*------search-----------*/
 .catgrories {
   background-color: #f6f9fc;
@@ -127,6 +222,7 @@ header ul li a:hover {
   header ul {
     padding-top: 30px;
   }
+
   .nav-links-mobile {
     position: absolute;
     display: block;
@@ -178,31 +274,9 @@ header ul li a:hover {
   .header.active {
     height: 10vh;
   }
-  header {
-    height: auto; /* Adjust height for mobile devices */
-  }
-
-  header ul {
-    line-height: 20px; /* Adjust line height for mobile devices */
-    padding-top: 10px; /* Adjust padding for mobile devices */
-  }
-
-  header ul li {
-    margin-left: 0; /* Remove margin for list items */
-  }
-
-  header ul li a {
-    font-size: 13px; /* Adjust font size for menu items */
-  }
-
-  .search {
-    width: 100%; /* Occupy full width on mobile devices */
-    justify-content: flex-end; /* Align items to the right */
-    position: relative; /* Make it relative for absolute positioning of search icon */
-  }
 
   .search-box {
-    position: absolute; /* Position search box absolutely */
+    display: none; /* Position search box absolutely */
     top: 100%; /* Position below the search bar */
     right: 0; /* Align to the right */
     width: 100%; /* Occupy full width */
@@ -219,6 +293,6 @@ header ul li a:hover {
   }
 
   .search-box input {
-    width: calc(100% - 40px); /* Adjust input width to fit container */
+    display: none;
   }
 }

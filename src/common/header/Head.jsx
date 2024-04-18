@@ -6,10 +6,12 @@ const Head = () => {
       <section className="head">
         <div className="container d-flex">
           <div className="left row">
-            <i className="fa fa-phone"></i>
-            <label>+27 69 856 9893</label>
-            <i className="fa fa-envelope"></i>
-            <label>sah.sakhile@gmail.com</label>
+            <section className="detail-info">
+              <i className="fa fa-phone"></i>
+              <label>+27 69 856 9893</label>
+              <i className="fa fa-envelope"></i>
+              <label>sah.sakhile@gmail.com</label>
+            </section>
           </div>
           <div className="right row RText">
             <label>Theme FAQ's</label>
