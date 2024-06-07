@@ -11,12 +11,18 @@ const Search = ({ CartItem }) => {
     setSearchActive(!searchActive);
     if (!searchActive) {
       // If search is becoming active, focus on the input
+      setSearchValue(""); // Clear search input value
       inputRef.current.focus();
     }
   };
 
   const handleInputChange = (e) => {
     setSearchValue(e.target.value);
+  };
+
+  const clearSearch = () => {
+    setSearchValue(""); // Clear search input value
+    setSearchActive(false); // Deactivate search
   };
 
   return (
@@ -26,7 +32,13 @@ const Search = ({ CartItem }) => {
           <div className="logo width">
             <img src={logo} alt="" />
           </div>
-          <i className="fa fa-search" onClick={toggleSearch}></i>
+          <div className="search-center">
+            {searchActive ? (
+              <i className="fa fa-arrow-left" onClick={clearSearch}></i>
+            ) : (
+              <i className="fa fa-search" onClick={toggleSearch}></i>
+            )}
+          </div>
           <div className={`search-box f-flex ${searchActive ? "active" : ""}`}>
             <input
               ref={inputRef}
@@ -37,9 +49,8 @@ const Search = ({ CartItem }) => {
             />
             <span>All Category</span>
           </div>
-
           <div className="icon f-flex width">
-            <i className="fa fa-user  icon-circle"></i>
+            <i className="fa fa-user icon-circle"></i>
             <div className="cart">
               <Link to="/cart">
                 <i className="fa fa-shopping-bag icon-circle"></i>
